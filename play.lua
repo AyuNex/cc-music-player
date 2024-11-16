@@ -92,7 +92,12 @@ function playChunk(chunk)
 	return returnValue
 end
 
-print("Playing '" .. drive.getDiskLabel() .. "' at volume " .. (volume or 1.0))
+if drive == nil or not drive.isDiskPresent() then
+	print("Playing '" .. selectedSong .. "' at volume " .. (volume or 1.0))
+else
+	print("Playing '" .. drive.getDiskLabel() .. "' at volume " .. (volume or 1.0))
+end
+
 
 local quit = false
 
